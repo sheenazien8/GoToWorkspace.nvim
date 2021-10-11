@@ -1,4 +1,3 @@
-local helpers = require('helpers')
 local fn = vim.fn
 local cmd = vim.cmd
 local json_file = os.getenv("HOME") .. "/.vim/workspace.json"
