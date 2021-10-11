@@ -5,6 +5,16 @@ local json_file = os.getenv("HOME") .. "/.vim/workspace.json"
 local path_session = os.getenv("HOME") ..  "/.vim/sessions/"
 local custom_commands_before_save = "NvimTreeClose"
 
+local function split(inputstr, sep)
+  if sep == nil then
+    sep = "%s"
+  end
+  local t={}
+  for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+    table.insert(t, str)
+  end
+  return t
+end
 local function tableLength(table)
   if table == nil  then
     return nil
@@ -88,7 +98,7 @@ end
 
 local function getCwd()
   local current_path = fn.getcwd()
-  local arr = helpers.split(current_path, '/')
+  local arr = split(current_path, '/')
   local lastIndex = #arr - 0
   local cwd = arr[lastIndex]
 
